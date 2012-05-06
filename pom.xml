@@ -26,10 +26,11 @@
     </developers>
 
     <scm>
-        <connection>scm:git:ssh://github.com:jenkinsci/ipmessenger-plugin.git</connection>
-        <developerConnection>scm:git:ssh://github.com:jenkinsci/ipmessenger-plugin.git</developerConnection>
+        <connection>scm:git:ssh://github.com/jenkinsci/ipmessenger-plugin.git</connection>
+        <developerConnection>scm:git:ssh://github.com/jenkinsci/ipmessenger-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/ipmessenger-plugin</url>
     </scm>
+
 
     <dependencies>
         <dependency>
