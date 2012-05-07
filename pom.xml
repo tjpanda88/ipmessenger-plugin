@@ -8,7 +8,7 @@
     </parent>
 
     <artifactId>ipmessenger-plugin</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <name>IPMessenger plugin</name>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/IPMessenger+Plugin</url>
