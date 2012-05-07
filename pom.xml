@@ -27,7 +27,7 @@
 
     <scm>
         <connection>scm:git:ssh://github.com/jenkinsci/ipmessenger-plugin.git</connection>
-        <developerConnection>scm:git:ssh://github.com/jenkinsci/ipmessenger-plugin.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/ipmessenger-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/ipmessenger-plugin</url>
     </scm>
 
