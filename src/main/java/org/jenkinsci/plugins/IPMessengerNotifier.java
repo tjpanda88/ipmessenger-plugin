@@ -65,7 +65,8 @@ public class IPMessengerNotifier extends Notifier {
             fromHost = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
             logger.println(this.getClass().getSimpleName()
-                    + ": Can't get hostname of jenkins.");
+                    + ": Can't get hostname of jenkins."
+                    + e.getMessage());
         }
         try {
             message += TokenMacro.expandAll(build, listener, messageTemplate);
@@ -77,13 +78,16 @@ public class IPMessengerNotifier extends Notifier {
         } catch (MacroEvaluationException e) {
             logger.println(this.getClass().getSimpleName()
                     + "IPMessengerNotifier: MacroEvaluationException happened. "
-                    + "Is message template correct ?");
+                    + "Is message template correct ?"
+                    + e.getMessage());
         } catch (IOException e) {
             logger.println(this.getClass().getSimpleName()
-                    + "IPMessengerNotifier: IOException happened. ");
+                    + "IPMessengerNotifier: IOException happened. "
+            + e.getMessage());
         } catch (InterruptedException e) {
             logger.println(this.getClass().getSimpleName()
-                    + "IPMessengerNotifier: InterruptedException happened. ");
+                    + "IPMessengerNotifier: InterruptedException happened. "
+            + e.getMessage());
         }
 
         // always return true;
@@ -176,16 +180,20 @@ public class IPMessengerNotifier extends Notifier {
             socket.send(packet);
         } catch (UnsupportedEncodingException e) {
             logger.println(this.getClass().getSimpleName()
-                    + ": UnsupportedEncodingException happened. You should change message template.");
+                    + ": UnsupportedEncodingException happened. You should change message template."
+                    + e.getMessage());
         } catch (SocketException e) {
             logger.println(this.getClass().getSimpleName()
-                    + ": SocketException happened");
+                    + ": SocketException happened"
+                    + e.getMessage());
         } catch (UnknownHostException e) {
             logger.println(this.getClass().getSimpleName()
-                    + ": UnknownHostException: " + toHost);
+                    + ": UnknownHostException: " + toHost
+                    + e.getMessage());
         } catch (IOException e) {
             logger.println(this.getClass().getSimpleName()
-                    + ": IOException happened");
+                    + ": IOException happened"
+                    + e.getMessage());
         } finally {
             if (socket != null) {
                 socket.close();
