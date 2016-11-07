@@ -9,4 +9,8 @@
   <f:entry title="Recipient host list" field="recipientHosts">
     <f:textarea />
   </f:entry>
+  <f:entry title="Send message for every unstable build" field="failSend">
+       <f:checkbox/>
+   </f:entry>
+
 </j:jelly>

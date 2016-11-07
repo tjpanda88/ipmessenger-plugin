@@ -3,6 +3,7 @@ package org.jenkinsci.plugins;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.model.BuildListener;
+import hudson.model.Result;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.tasks.BuildStepDescriptor;
@@ -35,11 +36,13 @@ public class IPMessengerNotifier extends Notifier {
     private final int sleep = 2500;
     private final String messageTemplate;
     private final String recipientHosts;
+    private final boolean failSend;
 
     @DataBoundConstructor
-    public IPMessengerNotifier(String messageTemplate, String recipientHosts) {
+    public IPMessengerNotifier(String messageTemplate, String recipientHosts, boolean failSend) {
         this.messageTemplate = messageTemplate;
         this.recipientHosts = recipientHosts;
+        this.failSend = failSend;
     }
 
     public String getRecipientHosts() {
@@ -50,6 +53,10 @@ public class IPMessengerNotifier extends Notifier {
         return messageTemplate;
     }
 
+    public boolean getFailSend() {
+        return failSend;
+    }
+
     public BuildStepMonitor getRequiredMonitorService() {
         return BuildStepMonitor.NONE;
     }
@@ -58,6 +65,9 @@ public class IPMessengerNotifier extends Notifier {
     public boolean perform(AbstractBuild<?, ?> build, Launcher launcher,
             BuildListener listener) {
 
+        if(failSend && build.getResult() == Result.SUCCESS) {
+            return true;
+        }
         PrintStream logger = listener.getLogger();
         String message = "BUILD " + build.getResult().toString() + "\n";
 
